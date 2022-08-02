@@ -70,7 +70,7 @@ const App3 = () => {
     const handleChangeBrand = (brand) => {
         setCurrentBrand(brand.name);
         setCurrentBrandId(brand.id);
-        getCategories(brand.id); //calling the function that gets the categories
+        getCategories(brand.id);
         setShowSelect(false);
     }
 
@@ -116,7 +116,6 @@ const App3 = () => {
                 {loading && <div>Loading...</div>}
                 {!loading && brands.map((brand, index) => {
                     return (<Option key={index} handler={handleChangeBrand} object={brand}/>)
-                    // return (<div className='select-option' key={index} onClick={() => handleChangeBrand(brand)}>{brand.name}</div>)
                 })}
                 <div className='button-container'>
                     <button onClick={() => getBrands('bck')}>BACK</button>
@@ -133,7 +132,6 @@ const App3 = () => {
                 {loading && <div>Loading...</div>}
                 {!loading && categories.map((category, index) => {
                     return (<Option key={index} handler={handleChangeCategory} object={category}/>)
-                    // return (<div className='select-option' key={index} onClick={() => handleChangeCategory(category)}>{category.name}</div>)
                 })}
                 <button onClick={() => setShowCatSelect(false)}>x</button>
             </div>
