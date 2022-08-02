@@ -6,7 +6,7 @@ const Results = ({data, setter}) => {
   return (
         <div className='results'>
         Your size is  
-            {!data.length && <div className='results-data'>not possible to determine. Maybe try measuring again?</div>}
+            {!data.length && <div className='results-data'>not found.</div>}
             {data.length === 2 && <div className='results-data'>{data[1].label} or {data[0].label}</div>}
             {/* {data.length && data.map((item, index) => {
                 return (<div key={index}>{item.label}</div>)
