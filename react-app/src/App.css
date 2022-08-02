@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 15px;
+    border: 1px solid rgb(160, 159, 159);
+
+    background-color: #f3f3f3;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    /* top borders radius 10px */
+    border-radius: 15px 15px 0 0;
+
+    background-color: #dfeeeb;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.header-logo {
+    margin-right: 5px;
+}
+
+.input {
+    margin-top: 15px;
+}
+
+.brand {
+    width: 80%;
+    box-sizing: border-box;
+
+    background-color: #fff;
+    color: #bfbfbf;
+    padding: 10px;
+
+    border-bottom: 2px solid #c0eae0;
+}
+
+.category {
+    width: 80%;
+    box-sizing: border-box;
+
+    background-color: #fff;
+    color: #bfbfbf;
+    padding: 10px;
+
+    border-bottom: 2px solid #c0eae0;
+}
+
+.select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+
+    box-sizing: border-box;
+    border-radius: 15px;
+    
+    background-color: #f3f3f3;
+    color: #bfbfbf;
+    text-align: center;
+
+    overflow: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.select::-webkit-scrollbar {
+    display: none;
+}
+
+.select-option {
+    cursor: pointer;
+}
+
+.select-option:hover {
+    color: #3f3f3f;
+}
+
+.calc-button {
+    background-color: #b7efe4;
+    color: #3f3f3f;
+    border: 3px solid #bbfff0;
+    border-radius: 15px;
+
+    padding: 10px 15px;
+    margin-bottom: 15px;
+
+    filter: drop-shadow(0 8px 4px #bfbfbf);
+
+    cursor: pointer;
+}
