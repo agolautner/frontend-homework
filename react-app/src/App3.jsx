@@ -80,27 +80,36 @@ const App3 = () => {
         setShowCatSelect(false);
     }
 
+    //calculating the size if the user has entered the necessary data
     const calculateSize = async () => {
-        setLoading(true);
-        const response = await axios.get(`https://size-calculator-api.sspinc.io/sizes?brand_id=${currentBrandId}&category_id=${currentCategoryId}&measurement=${userSize}`, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Basic ' + btoa(`${username}:${apiKey}`)
-            }
-        });
-
-        setLoading(false);
-        setResults(response.data.sizes);
-        setShowResults(true);
-        console.log(response.data);
+        if (currentCategory !== 'Choose a category' && userSize !== 0 && currentBrand !== 'Choose a brand') {
+            setLoading(true);
+            const response = await axios.get(`https://size-calculator-api.sspinc.io/sizes?brand_id=${currentBrandId}&category_id=${currentCategoryId}&measurement=${userSize}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Basic ' + btoa(`${username}:${apiKey}`)
+                }
+            });
+    
+            setLoading(false);
+            setResults(response.data.sizes);
+            setShowResults(true);
+        }
     }
 
+    //if the categories change, selection should be reset
+    useEffect(() => {
+        setCurrentCategory('Choose a category');
+    }, [categories]);
+
+    //adding the value of 'next' to an array to be used for pagination
     useEffect(() => {
         if (!(nextArray.includes(next))) {
             setNextArray([...nextArray, next]);
         }
     }, [next]);
 
+    //calling getBrands on mount
     useEffect(() => {
         getBrands('fwd');
     }, []);
