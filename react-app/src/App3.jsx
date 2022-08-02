@@ -1,6 +1,8 @@
 import './App.css';
 import React, {useState, useEffect} from 'react';
 import Header from './components/Header';
+import Input from './components/Input';
+import Option from './components/Option';
 const axios = require('axios');
 const username = 'user3472';
 const apiKey = '0f6aa487-0f3b-41dc-95be-86c19dd0b98d';
@@ -66,14 +68,12 @@ const App3 = () => {
         setCurrentBrandId(brand.id);
         getCategories(brand.id); //calling the function that gets the categories
         setShowSelect(false);
-        alert('You have selected: ' + brand.name + ' id: ' + brand.id);
     }
 
     const handleChangeCategory = (category) => {
         setCurrentCategory(category.name);
         setCurrentCategoryId(category.id);
         setShowCatSelect(false);
-        alert('You have selected: ' + category.name + ' id: ' + category.id);
     }
 
     const calculateSize = async () => {
@@ -85,18 +85,11 @@ const App3 = () => {
             }
         });
 
-        console.log('sending request to api');
-        console.log({
-            currentBrandId, currentCategoryId, userSize
-        });
-        console.log(response.status);
-
         setLoading(false);
         console.log(response.data);
     }
 
     useEffect(() => {
-        console.log('next is: ', next);
         if (!(nextArray.includes(next))) {
             setNextArray([...nextArray, next]);
         }
@@ -111,37 +104,39 @@ const App3 = () => {
         <Header />
 
         {/* brand select */}
-        <div className="brand input" onClick={() => setShowSelect(true)}>{currentBrand}</div>
+        <Input display={currentBrand} setter={setShowSelect}/>
         {showSelect && 
             <div className="brand-select select">
                 {loading && <div>Loading...</div>}
                 {!loading && brands.map((brand, index) => {
-                    return (<div className='select-option' key={index} onClick={() => handleChangeBrand(brand)}>{brand.name}</div>)
+                    return (<Option key={index} handler={handleChangeBrand} object={brand}/>)
+                    // return (<div className='select-option' key={index} onClick={() => handleChangeBrand(brand)}>{brand.name}</div>)
                 })}
                 <div className='button-container'>
                     <button onClick={() => getBrands('bck')}>BACK</button>
+                    <button onClick={() => setShowSelect(false)}>x</button>
                     <button onClick={() => getBrands('fwd')}>NEXT</button>
-                    <button onClick={() => setShowSelect(false)}>close</button>
                 </div>
             </div>
         }
 
         {/* category select */}
-        <div className="category input" onClick={() => setShowCatSelect(true)}>{currentCategory}</div>
+        <Input display={currentCategory} setter={setShowCatSelect}/>
         {showCatSelect &&
             <div className="category-select select">
                 {loading && <div>Loading...</div>}
                 {!loading && categories.map((category, index) => {
-                    return (<div className='select-option' key={index} onClick={() => handleChangeCategory(category)}>{category.name}</div>)
+                    return (<Option key={index} handler={handleChangeCategory} object={category}/>)
+                    // return (<div className='select-option' key={index} onClick={() => handleChangeCategory(category)}>{category.name}</div>)
                 })}
-                <button onClick={() => setShowCatSelect(false)}>close</button>
+                <button onClick={() => setShowCatSelect(false)}>x</button>
             </div>
         }
 
         {/* size select */}
         <div className="size input">
             My size is
-            <input type="number" step={'0.1'} onChange={(e) => setUserSize(e.target.value)}/>
+            <input className='num-input' type="number" step={'0.1'} onChange={(e) => setUserSize(e.target.value)}/>
             inches.
         </div>
 
