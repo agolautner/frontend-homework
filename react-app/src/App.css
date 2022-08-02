@@ -37,6 +37,8 @@
     padding-right: 10%;
     padding-top: 10px;
     padding-bottom: 10px;
+
+    z-index: 101;
 }
 
 .header-logo {
@@ -66,28 +68,6 @@
 .dropdown-icon {
     cursor: pointer;
 }
-
-/* .brand {
-    width: 80%;
-    box-sizing: border-box;
-
-    background-color: #fff;
-    color: #bfbfbf;
-    padding: 10px;
-
-    border-bottom: 2px solid #c0eae0;
-}
-
-.category {
-    width: 80%;
-    box-sizing: border-box;
-
-    background-color: #fff;
-    color: #bfbfbf;
-    padding: 10px;
-
-    border-bottom: 2px solid #c0eae0;
-} */
 
 .select {
     position: absolute;
@@ -154,7 +134,9 @@
     color: #3f3f3f;
 }
 
-.calc-button {
+.calc-button, .results-button {
+    width: 30%;
+
     background-color: #b7efe4;
     color: #3f3f3f;
     border: 3px solid #bbfff0;
@@ -167,4 +149,34 @@
     filter: drop-shadow(0 8px 4px #bfbfbf);
 
     cursor: pointer;
+}
+
+.results {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    padding-top: 50px;
+
+    box-sizing: border-box;
+    border-radius: 15px;
+    
+    background-color: #f3f3f3;
+    color: #3f3f3f;
+    text-align: center;
+    font-weight: 300;
+}
+
+.results-data {
+    font-weight: 600;
+    font: 40px 'Roboto', sans-serif;
 }

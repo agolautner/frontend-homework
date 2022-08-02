@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import Header from './components/Header';
 import Input from './components/Input';
 import Option from './components/Option';
+import Results from './components/Results';
 const axios = require('axios');
 const username = 'user3472';
 const apiKey = '0f6aa487-0f3b-41dc-95be-86c19dd0b98d';
@@ -22,6 +23,9 @@ const App3 = () => {
 
     const [showSelect, setShowSelect] = useState(false);
     const [showCatSelect, setShowCatSelect] = useState(false);
+
+    const [results, setResults] = useState([]);
+    const [showResults, setShowResults] = useState(false);
 
     const [loading, setLoading] = useState(false);
 
@@ -86,6 +90,8 @@ const App3 = () => {
         });
 
         setLoading(false);
+        setResults(response.data.sizes);
+        setShowResults(true);
         console.log(response.data);
     }
 
@@ -141,6 +147,8 @@ const App3 = () => {
         </div>
 
         <button className='calc-button' onClick={() => calculateSize()}>CALCULATE</button>
+
+        {showResults && <Results data={results} setter={setShowResults}/>}
     </div>
   )
 }
